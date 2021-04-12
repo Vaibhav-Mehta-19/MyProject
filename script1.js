@@ -22,13 +22,45 @@ recognition.onresult = function(event) {
   var current = event.resultIndex;
 
   var transcript = event.results[current][0].transcript;
-    if(transcript=="launch docker")
+    if(transcript=="run terminal")
+    {
+      window.location.href='http://192.168.43.206/shellinabox.html';
+    }
+    else if(transcript=="launch docker")
     {
       window.location.href='http://192.168.43.206/docker.html';
     }
-    else if(transcript=="show my ip")
+    else if(transcript=="manage dockers")
     {
-      window.location.href='http://192.168.43.206/cgi-bin/checkIP.py';
+      window.location.href='http://192.168.43.206/cgi-bin/docker_run.py';
+    }
+    else if(transcript=="view kube dashboard")
+    {
+      window.location.href='http://127.0.0.1:7635/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/';
+    }
+    else if(transcript=="access sample webpage")
+    {
+      window.location.href='http://192.168.99.100:32418';
+    }
+    else if(transcript=="launch ec2")
+    {
+      window.location.href='http://192.168.43.206/ec2.html';
+    }
+    else if(transcript=="launch s3")
+    {
+      window.location.href='http://192.168.43.206/s3.html';
+    }
+    else if(transcript=="upload a file")
+    {
+      window.location.href='http://192.168.43.206/fileupload.html';
+    }
+    else if(transcript=="run alexnet")
+    {
+      window.location.href='http://192.168.43.206/cgi-bin/alexnet.py';
+    }
+    else if(transcript=="run knn")
+    {
+      window.location.href='http://192.168.43.206/cgi-bin/knn.py';
     }
     else if(transcript=="run date")
     {
@@ -54,13 +86,9 @@ recognition.onresult = function(event) {
     {
       window.location.href='http://192.168.43.206/stopservice.html';
     }
-    else if(transcript=="setup hadoop")
+    else if(transcript=="hadoop dashboard")
     {
-      window.location.href='http://192.168.43.206/cgi-bin/hadoop_automate.html';
-    }
-    else if(transcript=="launch ec2")
-    {
-      window.location.href='http://192.168.43.206/cgi-bin/ec2.py';
+      window.location.href='http://192.168.43.206:50070';
     }
     else if(transcript=="make folder")
     {
@@ -70,9 +98,13 @@ recognition.onresult = function(event) {
     {
       window.location.href='http://192.168.43.206/ip.html';
     }
-    else if(transcript=="install basic software")
+    else if(transcript=="install software")
     {
       window.location.href='http://192.168.43.206/install_soft.html';
+    }
+    else if(transcript=="show my ip")
+    {
+      window.location.href='http://192.168.43.206/cgi-bin/checkIP.py';
     }
   
   var mobileRepeatBug = (current == 1 && transcript == event.results[0][0].transcript);
@@ -139,9 +171,45 @@ notesList.on('click', function(e) {
   if(target.hasClass('listen-note')) {
     var content = target.closest('.note').find('.content').text();
     readOutLoud(content);
-    if(content=="launch docker")
+    if(content=="run terminal")
     {
-    	window.location.href='http://192.168.43.206/docker.html';
+      window.location.href='http://192.168.43.206/shellinabox.html';
+    }
+    else if(content=="launch docker")
+    {
+      window.location.href='http://192.168.43.206/docker.html';
+    }
+    else if(content=="manage dockers")
+    {
+      window.location.href='http://192.168.43.206/cgi-bin/docker_run.py';
+    }
+    else if(content=="view kube dashboard")
+    {
+      window.location.href='http://127.0.0.1:7635/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/';
+    }
+    else if(content=="access sample webpage")
+    {
+      window.location.href='http://192.168.99.100:32418';
+    }
+    else if(content=="launch ec2")
+    {
+      window.location.href='http://192.168.43.206/ec2.html';
+    }
+    else if(content=="launch s3")
+    {
+      window.location.href='http://192.168.43.206/s3.html';
+    }
+    else if(content=="upload a file")
+    {
+      window.location.href='http://192.168.43.206/fileupload.html';
+    }
+    else if(content=="run alexnet")
+    {
+      window.location.href='http://192.168.43.206/cgi-bin/alexnet.py';
+    }
+    else if(content=="run knn")
+    {
+      window.location.href='http://192.168.43.206/cgi-bin/knn.py';
     }
     else if(content=="run date")
     {
@@ -167,13 +235,9 @@ notesList.on('click', function(e) {
     {
       window.location.href='http://192.168.43.206/stopservice.html';
     }
-    else if(content=="setup hadoop")
+    else if(content=="hadoop dashboard")
     {
-      window.location.href='http://192.168.43.206/cgi-bin/hadoop_automate.html';
-    }
-    else if(content=="launch ec2")
-    {
-      window.location.href='http://192.168.43.206/cgi-bin/ec2.py';
+      window.location.href='http://192.168.43.206:50070';
     }
     else if(content=="make folder")
     {
@@ -183,7 +247,7 @@ notesList.on('click', function(e) {
     {
       window.location.href='http://192.168.43.206/ip.html';
     }
-    else if(content=="install basic software")
+    else if(content=="install software")
     {
       window.location.href='http://192.168.43.206/install_soft.html';
     }
@@ -218,8 +282,8 @@ function renderNotes(notes) {
       html+= `<li class="note">
         <p class="header">
           <span class="date">${note.date}</span>
-          <a href="#" class="listen-note" title="Listen to Note">Listen to Note</a>
-          <a href="#" class="delete-note" title="Delete">Delete</a>
+          <a href="#" class="listen-note" title="Perform Task">Listen to Note</a>
+          <a href="#" class="delete-note" title="Delete the task">Delete</a>
         </p>
         <p class="content">${note.content}</p>
       </li>`;    
