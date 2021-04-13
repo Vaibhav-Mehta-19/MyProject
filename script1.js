@@ -284,7 +284,7 @@ function renderNotes(notes) {
       html+= `<li class="note">
         <p class="header">
           <span class="date">${note.date}</span>
-          <a href="#" class="listen-note" title="Perform Task">Listen to Note</a>
+          <a href="#" class="listen-note" title="Perform Task">Perform Task</a>
           <a href="#" class="delete-note" title="Delete the task">Delete</a>
         </p>
         <p class="content">${note.content}</p>
