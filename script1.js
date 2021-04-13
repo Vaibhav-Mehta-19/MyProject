@@ -22,6 +22,7 @@ recognition.onresult = function(event) {
   var current = event.resultIndex;
 
   var transcript = event.results[current][0].transcript;
+  transcript = transcript.toLowerCase();
     if(transcript=="run terminal")
     {
       window.location.href='http://192.168.43.206/shellinabox.html';
@@ -171,6 +172,7 @@ notesList.on('click', function(e) {
   if(target.hasClass('listen-note')) {
     var content = target.closest('.note').find('.content').text();
     readOutLoud(content);
+    content = content.toLowerCase();
     if(content=="run terminal")
     {
       window.location.href='http://192.168.43.206/shellinabox.html';
